@@ -1,0 +1,113 @@
+h2 {
+  padding: 1.5rem;
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.error {
+  display: block;
+  margin-top: 0.4rem;
+  color: #dc2626;
+  font-size: 0.85rem;
+}
+
+.success {
+  margin: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  color: #166534;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.backup-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.backup-row input {
+  flex: 1;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.backup-row button {
+  margin-top: 0;
+  background: #dc2626;
+}
+
+.backup-row button:hover {
+  background: #b91c1c;
+}
+
+hr {
+  margin: 2rem 0 1rem;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
