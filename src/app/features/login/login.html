@@ -1,0 +1,63 @@
+<div class="login-page">
+  <div class="login-card">
+    <h1>TMS Login</h1>
+
+    <p class="subtitle">Sign in to your account</p>
+
+    @if (error()) {
+      <div class="error-message">
+        {{ error() }}
+      </div>
+    }
+
+    <form (ngSubmit)="login()">
+      <!-- Username -->
+
+      <div class="form-group">
+        <label for="username"> Username </label>
+
+        <input
+          id="username"
+          type="text"
+          name="username"
+          placeholder="Enter username"
+          [ngModel]="username()"
+          (ngModelChange)="username.set($event)"
+        />
+      </div>
+
+      <!-- Password -->
+
+      <div class="form-group">
+        <label for="password"> Password </label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+        />
+      </div>
+
+      <!-- Login Button -->
+
+      <button type="submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          Logging in...
+        } @else {
+          Login
+        }
+      </button>
+    </form>
+
+    <div class="demo-account">
+      <strong>Demo Account</strong>
+
+      <p>Username: admin</p>
+
+      <p>Password: Password123!</p>
+    </div>
+  </div>
+</div>

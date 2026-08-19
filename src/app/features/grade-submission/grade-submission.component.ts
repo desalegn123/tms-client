@@ -1,17 +1,20 @@
-import { Component, inject } from "@angular/core";
-import { GradePayload, GradeService } from "../../services/grade.service";
-import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
-import { exhaustMap, Subject } from "rxjs";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
-import { MatCardModule } from "@angular/material/card";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { Subject } from 'rxjs';
+import { exhaustMap } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { GradeService, GradePayload } from '../../services/grade.service';
 
 @Component({
-  selector: "tms-grade-submission",
+  selector: 'tms-grade-submission',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -19,53 +22,54 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  templateUrl: "./grade-submission.component.html"
+  templateUrl: './grade-submission.component.html',
 })
 export class GradeSubmissionComponent {
   private api = inject(GradeService);
+
   private fb = inject(FormBuilder);
 
   gradeForm = this.fb.group({
-    studentId: [101, [Validators.required, Validators.min(1)]],
-    courseId: [302, [Validators.required, Validators.min(1)]],
-    score: [
-      88,
-      [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100)
-      ]
-    ]
+    studentId: [50, [Validators.required, Validators.min(1)]],
+
+    courseId: [50, [Validators.required, Validators.min(1)]],
+
+    score: [88, [Validators.required, Validators.min(0), Validators.max(100)]],
   });
 
   isSubmitting = false;
-  submissionStatus = "";
+
+  submissionStatus = '';
 
   private submitClick$ = new Subject<GradePayload>();
 
   constructor() {
     this.submitClick$
       .pipe(
-        exhaustMap(payload => {
+        exhaustMap((payload) => {
           this.isSubmitting = true;
-          this.submissionStatus = "Submitting grade to server...";
+
+          this.submissionStatus = 'Submitting grade to server...';
+
           return this.api.postGrade(payload);
         }),
-        takeUntilDestroyed()
+
+        takeUntilDestroyed(),
       )
       .subscribe({
-        next: result => {
+        next: (result) => {
           this.isSubmitting = false;
-          this.submissionStatus =
-            `Grade saved successfully! Record ID: ${result.id}`;
+
+          this.submissionStatus = `Grade saved successfully! Record ID: ${result.id}`;
         },
-        error: err => {
+
+        error: (err) => {
           this.isSubmitting = false;
-          this.submissionStatus =
-            `Submission failed: ${err.message || "Server error"}`;
-        }
+
+          this.submissionStatus = `Submission failed: ${err.message || 'Server error'}`;
+        },
       });
   }
 
@@ -75,8 +79,10 @@ export class GradeSubmissionComponent {
 
       this.submitClick$.next({
         studentId: Number(rawValue.studentId),
+
         courseId: Number(rawValue.courseId),
-        score: Number(rawValue.score)
+
+        score: Number(rawValue.score),
       });
     }
   }

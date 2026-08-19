@@ -13,7 +13,7 @@ describe('EnrollmentList', () => {
 
     fixture = TestBed.createComponent(EnrollmentList);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {

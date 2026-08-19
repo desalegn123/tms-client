@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": false
+    "analytics": "fb4ebce8-eaf4-4e3a-949a-1a329fff4ca6"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -22,6 +22,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -62,21 +63,26 @@
           },
           "defaultConfiguration": "production"
         },
+
         "serve": {
           "builder": "@angular/build:dev-server",
+
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
+
           "configurations": {
             "production": {
               "buildTarget": "tms-client:build:production"
             },
             "development": {
               "buildTarget": "tms-client:build:development"
-            },
-            "options": {
-              "proxyConfig": "proxy.conf.json"
             }
           },
+
           "defaultConfiguration": "development"
         },
+
         "test": {
           "builder": "@angular/build:unit-test"
         }

@@ -13,7 +13,7 @@ describe('GradeSubmissionComponent', () => {
 
     fixture = TestBed.createComponent(GradeSubmissionComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {

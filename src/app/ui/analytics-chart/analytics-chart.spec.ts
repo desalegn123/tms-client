@@ -11,9 +11,15 @@ describe('AnalyticsChart', () => {
       imports: [AnalyticsChart],
     }).compileComponents();
 
+    // fixture = TestBed.createComponent(AnalyticsChart);
+    // component = fixture.componentInstance;
+    // fixture.detectChanges();
     fixture = TestBed.createComponent(AnalyticsChart);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+
+    fixture.componentRef.setInput('data', []);
+
+    fixture.detectChanges();
   });
 
   it('should create', () => {

@@ -1,0 +1,49 @@
+.app-toolbar {
+  display: flex;
+  justify-content: flex-start; // everything aligned left
+  background: #1976d2; // Indigo Material color
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px; // spacing between links
+}
+
+a[mat-button] {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.app-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  background: #1976d2;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+}
+
+a[mat-button] {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.2); // semi-transparent highlight
+  border-radius: 20px; // rounded pill shape
+  padding: 0.25rem 0.75rem; // extra spacing inside
+  font-weight: 600; // bold text
+}

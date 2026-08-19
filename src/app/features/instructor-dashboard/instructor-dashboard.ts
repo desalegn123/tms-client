@@ -1,20 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EnrollmentStore } from '../../store/enrollment.store';
-import { AnalyticsChartComponent } from '../../ui/analytics-chart/analytics-chart';
+import { AnalyticsChart } from '../../ui/analytics-chart/analytics-chart';
 
 @Component({
   selector: 'tms-instructor-dashboard',
   standalone: true,
-  imports: [AnalyticsChartComponent],
+  imports: [AnalyticsChart],
   templateUrl: './instructor-dashboard.html',
-  styleUrl: './instructor-dashboard.scss' //check at the last
-  // pages of this file
+  styleUrl: './instructor-dashboard.scss',
 })
-export class InstructorDashboardComponent implements OnInit {
+export class InstructorDashboard implements OnInit {
   store = inject(EnrollmentStore);
 
   ngOnInit() {
     this.store.loadEnrollments();
-    this.store.listenForLiveUpdates();
   }
 }

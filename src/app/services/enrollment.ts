@@ -1,21 +1,22 @@
-import { Injectable, inject } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Enrollment } from "../models/enrollment.model";
-
-@Injectable({
-  providedIn: "root",
-})
+import { Service, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Enrollment } from '../models/enrollment.model';
+@Service()
 export class EnrollmentService {
   private http = inject(HttpClient);
-
-  private baseUrl = "http://localhost:5008/api/v2/enrollments";
-
+  private baseUrl = 'http://localhost:5049/api/v2/enrollments';
   getAll(): Observable<Enrollment[]> {
     return this.http.get<Enrollment[]>(this.baseUrl);
   }
-
   approve(id: string): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/${id}/approve`, {});
+  }
+
+  enroll(studentId: number, courseCode: string) {
+    return this.http.post(this.baseUrl, {
+      studentId,
+      courseCode,
+    });
   }
 }

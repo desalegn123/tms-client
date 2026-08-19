@@ -1,17 +1,15 @@
-<main class="app-shell">
-    <header class="top-bar">
-      <h1 class="app-title">TMS Client</h1>
-     <nav>
-        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-        <a routerLink="/instructors" routerLinkActive="active">Instructors</a>
-        <a routerLink="/enroll" routerLinkActive="active">Enroll</a>
-        <a routerLink="/grade-submissions" routerLinkActive="active">Grades
+<mat-toolbar color="primary" class="app-toolbar">
+  <div class="nav-links">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
+    <a mat-button routerLink="/instructor-dashboard" routerLinkActive="active-link"
+      >Instructor Dashboard</a
+    >
+    <a mat-button routerLink="/enrollments" routerLinkActive="active-link">Enrollments</a>
+    <a mat-button routerLink="/enroll" routerLinkActive="active-link">Enroll Form</a>
+    <a mat-button routerLink="/courses/101" routerLinkActive="active-link">Course Detail</a>
+    <a mat-button routerLink="/grade-submission" routerLinkActive="active-link">Grade Submission</a>
+    <a mat-button routerLink="/login" routerLinkActive="active-link">Login</a>
+  </div>
+</mat-toolbar>
 
-        </a>
-     </nav>
-
-    </header>
-    <section class="content">
-      <router-outlet></router-outlet>
-    </section>
-</main>
+<router-outlet></router-outlet>
