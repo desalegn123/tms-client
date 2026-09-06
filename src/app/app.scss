@@ -1,49 +1,98 @@
 .app-toolbar {
   display: flex;
-  justify-content: flex-start; // everything aligned left
-  background: #1976d2; // Indigo Material color
-  color: white;
-}
-
-.nav-links {
-  display: flex;
-  gap: 12px; // spacing between links
-}
-
-a[mat-button] {
-  color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-.app-toolbar {
-  display: flex;
   justify-content: flex-start;
-  background: #1976d2;
-  color: white;
+  align-items: center;
+
+  min-height: 64px;
+  padding: 0 24px;
+
+  // Professional charcoal background
+  background: #18181b;
+  color: #f4f4f5;
+
+  // Subtle separation from page content
+  border-bottom: 1px solid #27272a;
+
+  // Minimal professional shadow
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+
+  position: relative;
+  z-index: 10;
 }
 
 .nav-links {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 4px;
 }
 
 a[mat-button] {
-  color: white;
+  position: relative;
+
+  color: #a1a1aa;
   font-weight: 500;
-  text-transform: uppercase;
+  font-size: 14px;
+
+  text-transform: none;
+  letter-spacing: 0.1px;
+
+  border-radius: 6px;
+
+  padding: 0 14px;
+  min-height: 40px;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  // Small active indicator
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 3px;
+
+    width: auto;
+    height: 2px;
+
+    background: transparent;
+    border-radius: 2px;
+
+    transition: background-color 0.2s ease;
+  }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    background: #27272a;
+
+    transform: none;
+    box-shadow: none;
+
+    &::after {
+      background: #52525b;
+    }
+  }
+
+  &:active {
+    background: #3f3f46;
   }
 }
 
 .active-link {
-  background-color: rgba(255, 255, 255, 0.2); // semi-transparent highlight
-  border-radius: 20px; // rounded pill shape
-  padding: 0.25rem 0.75rem; // extra spacing inside
-  font-weight: 600; // bold text
+  color: #ffffff !important;
+  background: #27272a;
+
+  border-radius: 6px;
+
+  padding: 0 14px;
+
+  font-weight: 600;
+
+  box-shadow: none;
+
+  &::after {
+    background: #ffffff;
+  }
 }

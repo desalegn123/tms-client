@@ -40,7 +40,7 @@ export class Login {
     this.isLoading.set(true);
 
     const credentials: LoginRequest = {
-      username: this.username(),
+      email: this.username(),
       password: this.password(),
     };
 

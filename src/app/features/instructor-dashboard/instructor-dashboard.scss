@@ -1,61 +1,206 @@
-dashboard-header {
+.dashboard-header {
   padding: 1.5rem;
+
+  h1,
+  h2 {
+    margin: 0 0 0.5rem;
+
+    color: #18181b;
+
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #3f3f46;
+  }
 }
+
+// KPI cards row
 .kpi-row {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1.25rem;
+
+  margin-top: 1.5rem;
+
+  flex-wrap: wrap;
 }
+
+// KPI card
 .kpi-card {
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  background: #1e293b;
-  color: #e2e8f0;
+  position: relative;
+
+  min-width: 180px;
+  flex: 1;
+
   display: flex;
   flex-direction: column;
-  min-width: 160px;
+
+  padding: 1.25rem 1.5rem;
+
+  background: #ffffff;
+
+  color: #18181b;
+
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  overflow: hidden;
+
+  // Subtle top accent
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #27272a;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+
+    border-color: #d4d4d8;
+
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.06),
+      0 10px 20px rgba(0, 0, 0, 0.05);
+  }
 }
+
+// Pending KPI
 .kpi-card.pending {
-  border-left: 4px solid #d97706;
+  &::before {
+    background: #d97706;
+  }
 }
+
+// KPI number
 .kpi-value {
-  font-size: 2rem;
-  font-weight: 700;
+  margin-top: 0.5rem;
+
+  color: #18181b;
+
+  font-size: 2.1rem;
+  font-weight: 750;
+
+  line-height: 1.2;
 }
+
+// Pending value
+.kpi-card.pending .kpi-value {
+  color: #b45309;
+}
+
+// KPI label
 .kpi-label {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
+
+  color: #71717a;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
+// Chart section
 .chart-section {
   margin-top: 2rem;
+
   padding: 0 1.5rem;
 }
-/*
-* NOTE: This min-height prevents a CLS (Cumulative Layout Shift) bug.*
-* The @defer (on viewport) trigger uses the browser's IntersectionObserver.
-* If .skeleton-chart renders at 0px height, the observer immediatelyr
-eports
-* it as "in viewport" — and the deferred chunk downloads on page load,* defeating the entire purpose of code splitting.
-*
-* Setting min-height reserves visual space, ensures the element starts* off-screen on most devices, and keeps the page layout stable when* the real chart swaps in.
-*/
+
+// Chart title
+.chart-section h2 {
+  margin: 0 0 1rem;
+
+  color: #27272a;
+
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+// Chart skeleton
 .skeleton-chart {
   min-height: 250px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  background: #1e293b;
-  border: 2px dashed #334155;
-  border-radius: 8px;
-  color: #64748b;
-  font-size: 1rem;
+
+  background: #fafafa;
+
+  border: 1px dashed #d4d4d8;
+  border-radius: 10px;
+
+  color: #71717a;
+
+  font-size: 0.95rem;
+  font-weight: 500;
 }
+
+// Spinner area
 .spinner {
   min-height: 250px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
-  font-size: 1rem;
+
+  color: #52525b;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .kpi-row {
+    gap: 1rem;
+  }
+
+  .kpi-card {
+    min-width: 140px;
+  }
+
+  .chart-section {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-card {
+    flex: 1 1 100%;
+  }
 }
